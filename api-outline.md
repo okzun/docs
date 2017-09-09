@@ -19,15 +19,15 @@ Should be returned when:
 **response body**
 ```json
 {
-  id: "string",
-  name: "string",
-  billing_address: {
-    address_line: "string",
-    address_line2: "string",
-    city: "string",
-    region: "string",
-    country: "string",
-    postal_code: "string"
+  "id": "string",
+  "name": "string",
+  "billing_address": {
+    "address_line": "string",
+    "address_line2": "string",
+    "city": "string",
+    "region": "string",
+    "country": "string",
+    "postal_code": "string"
   }
   ...
 }
@@ -42,14 +42,14 @@ Should be returned when:
 **request body**
 ```json
 {
-  name: "string",
-  billing_address: {
-    address_line: "string",
-    address_line2: "string",
-    city: "string",
-    region: "string",
-    country: "string",
-    postal_code: "string"
+  "name": "string",
+  "billing_address": {
+    "address_line": "string",
+    "address_line2": "string",
+    "city": "string",
+    "region": "string",
+    "country": "string",
+    "postal_code": "string"
   }
   ...
 }
