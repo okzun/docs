@@ -16,23 +16,40 @@ Should be returned when:
 **params**
 - `id`: the user id
 
+**response body**
+```json
+{
+  id: "string",
+  name: "string",
+  billing_address: {
+    address_line: "string",
+    address_line2: "string",
+    city: "string",
+    region: "string",
+    country: "string",
+    postal_code: "string"
+  }
+  ...
+}
+```
+
 
 `PUT /user/{id}` - update user account data
 
 **params**
 - `id`: the user id
 
-**body**
+**request body**
 ```json
 {
-  name: 'string',
+  name: "string",
   billing_address: {
-    address_line: 'string',
-    address_line2: 'string',
-    city: 'string',
-    region: 'string',
-    country: 'string',
-    postal_code: 'string'
+    address_line: "string",
+    address_line2: "string",
+    city: "string",
+    region: "string",
+    country: "string",
+    postal_code: "string"
   }
   ...
 }
