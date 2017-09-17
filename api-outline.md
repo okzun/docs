@@ -11,7 +11,7 @@ Should be returned when:
 
 ## Users
 
-`GET /user/{id}` - gets user account data
+`GET /users/{id}` - gets user account data
 
 **params**
 - `id`: the user id
@@ -34,7 +34,7 @@ Should be returned when:
 ```
 
 
-`PUT /user/{id}` - update user account data
+`PUT /users/{id}` - update user account data
 
 **params**
 - `id`: the user id
