@@ -59,6 +59,7 @@ API Root Path
 ### Nodes
 
 `GET organizations/:org_id/nodes` - return all nodes belonging to `:org_id`
+`GET organizations/:org_id/nodes?isRoot=true` - return all root level nodes belonging to `:org_id`
 
 `GET organizations/:org_id/nodes/:id` - return node and children if present (same as /offerings/:id)
 
