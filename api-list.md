@@ -72,7 +72,7 @@ API Root Path
 
 `DELETE organizations/:org_id/nodes/:id` - delete a node, only available prior to offering
 
-#### Occasions and Containers
+### Occasions and Containers
 
 `POST organizations/:org_id/occasions` - create a new occasion
 
@@ -82,7 +82,7 @@ API Root Path
 
 `DELETE organizations/:org_id/containers/:id?:id2` - remove node `id2` from container with `id`
 
-#### Surveys
+### Surveys
 
 `POST organizations/:org_id/surveys` - create a new survey
 
