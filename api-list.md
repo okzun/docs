@@ -22,6 +22,7 @@ API Root Path
 |   |-- surveys
 |   |   |-- node
 |-- offerings
+|   |-- survey
 |-- registrations
 |   |-- node
 |   |-- offering
