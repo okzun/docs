@@ -58,17 +58,17 @@ API Root Path
 
 ### Nodes
 
-`GET organizations/:org_id/nodes` - return all nodes belonging to `:org_id`
+`GET organizations/:org_id/nodes` - return all nodes belonging to `:org_id`  
 `GET organizations/:org_id/nodes?isRoot=true` - return all root level nodes belonging to `:org_id`
 
 `GET organizations/:org_id/nodes/:id` - return node and children if present (same as /offerings/:id)
 
 `PUT organizations/:org_id/nodes/:id` - update node
 
-`PUT organizations/:org_id/nodes/:id/publish` - set node as publicly visible
+`PUT organizations/:org_id/nodes/:id/publish` - set node as publicly visible  
 `PUT organizations/:org_id/nodes/:id/unpublish` - set node as invisible, will need lots of checking (can’t be done once offered, or part of an offered tree)
 
-`PUT organizations/:org_id/nodes/:id/offer` - set node to an offering (can be registered for)
+`PUT organizations/:org_id/nodes/:id/offer` - set node to an offering (can be registered for)  
 `PUT organizations/:org_id/nodes/:id/deoffer` - not implemented? Not implemented once there are registrations?
 
 `DELETE organizations/:org_id/nodes/:id` - delete a node, only available prior to offering
