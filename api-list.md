@@ -5,7 +5,7 @@
 * Root resource names are plural
   * Related resources being acted on via a root resource are singular
     * e.x. `surveys/node`
-* Resource updates are performed via `POST` with JSON input bodies
+* Resource creations are performed via `POST` with JSON input bodies
   * Avoid using URL query parameters
 * Verb actions that update flag-type states can be included under resources
     * e.x. `node/publish`
