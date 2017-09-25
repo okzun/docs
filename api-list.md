@@ -107,6 +107,8 @@ API Root Path
 
 `PUT /offerings/:id/deoffer` - not implemented? (see above)
 
+`GET /offerings/:id/survey` - get the group of surveys from all nodes on the tree below `:id`
+
 ## Registrations
 
 ---
