@@ -61,8 +61,9 @@ API Root Path
 
 `POST /users` - create a new user, needs to be coordinated with Cognito process
 
-`DELETE /users/:id` - deactivate a user, super admin level only? If we let users delete themselves, it would screw with existing and historical registrations.
-`PUT /users/:id/deactivate` - alternative at user level?
+`DELETE /users/:id` - deactivate a user
+
+`GET /users/:id/registrations` - get all registrations for a specific user
 
 ## Organizations
 
@@ -81,7 +82,7 @@ API Root Path
 `GET /organizations/:org_id/nodes` - return all nodes belonging to `:org_id`  
 `GET /organizations/:org_id/nodes?isRoot=true` - return all root level nodes belonging to `:org_id`
 
-`GET /organizations/:org_id/nodes/:id` - return node and children if present (same as /offerings/:id)
+`GET /organizations/:org_id/nodes/:id` - return node and children if present
 
 `PUT /organizations/:org_id/nodes/:id` - update node
 ```
@@ -138,17 +139,18 @@ API Root Path
 
 `GET /organizations/:org_id/registrations/:id` - get a specific registration
 
-`GET /organizations/:org_id/registrations/node/:id` - get all registrations beneath a specific node on a tree
+`GET /organizations/:org_id/registrations?root=:id` - get all registrations beneath a specific node on a tree
 
-`GET /organizations/:org_id/registrations/user/:id` - get all registrations for a specific user
+`POST /organizations/:org_id/registrations` - attempt to register for offering `:id`
+```
+{ "offering": "OFFERING_ID", ... }
+```
 
-`POST /organizations/:org_id/registrations/offering/:id` - attempt to register for offering `:id`
-
-`POST /organizations/:org_id/registrations/offline` - batch of registrations from offline source, admin only
+`POST /organizations/:org_id/registrations` - batch of registrations from offline source, admin only, `content-type: text/csv`
 
 `PUT /organizations/:org_id/registrations/:id` - update limited set of information - likely only admin
 
-`DELETE /organizations/:org_id/registrations/:id` - delete a specific registration, admin only, possibly super admin only
+`DELETE /organizations/:org_id/registrations/:id` - cancel a specific registration, optionally issues refunds
 
 ## Payments
 
