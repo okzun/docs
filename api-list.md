@@ -17,8 +17,8 @@ API Root Path
 |-- users
 |-- organizations
 |   |-- nodes
-|   |   |-- occasions
-|   |   |-- containers
+|   |-- occasions
+|   |-- containers
 |   |-- surveys
 |   |   |-- node
 |-- offerings
@@ -74,13 +74,13 @@ API Root Path
 
 #### Occasions and Containers
 
-`POST organizations/:org_id/nodes/occasions` - create a new occasion
+`POST organizations/:org_id/occasions` - create a new occasion
 
-`POST organizations/:org_id/nodes/containers` - create a new container
+`POST organizations/:org_id/containers` - create a new container
 
-`PUT organizations/:org_id/nodes/containers/:id?:id2` - add node `id2` to container with `id`
+`PUT organizations/:org_id/containers/:id?:id2` - add node `id2` to container with `id`
 
-`DELETE organizations/:org_id/nodes/containers/:id?:id2` - remove node `id2` from container with `id`
+`DELETE organizations/:org_id/containers/:id?:id2` - remove node `id2` from container with `id`
 
 #### Surveys
 
