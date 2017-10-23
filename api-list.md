@@ -75,6 +75,8 @@ API Root Path
 
 `POST /organizations` - create a new organization
 
+`PATCH /organizations` - update an organization(i.e. make active/inactive, change other attrs, etc)
+
 `DELETE /organizations/:id` - deactivate organization
 
 ### Nodes
