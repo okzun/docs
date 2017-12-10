@@ -34,6 +34,9 @@
 ```
 API Root Path  
 |-- users
+|   |-- payments
+|      |-- stripe
+|      |-- paypal
 |-- nodes (limited api)
 |-- organizations
 |   |-- nodes
@@ -48,7 +51,7 @@ API Root Path
 |   |   |-- offline
 |   |-- payments
 ```
-  
+
 ## Users
 
 ---
@@ -64,6 +67,12 @@ API Root Path
 `DELETE /users/:id` - deactivate a user
 
 `GET /users/:id/registrations` - get all registrations for a specific user
+
+### Payments
+Assume for now same verbs/functions between Stripe and PayPal - represented as `[service]`
+
+`POST /users/:id/payments/[service]` - create a charge for a transaction
+
 
 ## Organizations
 
@@ -88,7 +97,7 @@ API Root Path
 
 `PUT /organizations/:org_id/nodes/:id` - update node
 ```
-{ 
+{
     "published": true // html body sets node to be published.
     , "offering" : { // html body sets node to be an offering
        // with the following options
@@ -101,7 +110,7 @@ API Root Path
        , ...
     }
     , "surveys": [ "surveyId1", "surveyId2", ... ] // set surveys
-} 
+}
 ```
 
 `DELETE /organizations/:org_id/nodes/:id` - delete a node, only available prior to offering
@@ -176,4 +185,3 @@ API Root Path
 `GET /nodes` - super admin, retrieve all nodes. filter by `?offering`, `?isCollection=true`, etc
 
 `GET /nodes?region=GEOCODE` - get node in a region
-
