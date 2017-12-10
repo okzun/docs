@@ -42,6 +42,8 @@ API Root Path
 |   |-- nodes
 |   |-- occasions
 |   |-- containers
+|   |-- groups
+|   |-- permissions
 |   |-- surveys
 |   |   |-- node
 |   |-- registrations
@@ -53,8 +55,8 @@ API Root Path
 ```
 
 ## Users
-
 ---
+>NOTE: This may or not be wrapped in API. The functionality already exists in Cognito and we may just interact directly with Cognito for simplicity at the moment.
 
 `GET /users`  - return all users. *This should not be implemented or only at super admin*
 
@@ -69,7 +71,7 @@ API Root Path
 `GET /users/:id/registrations` - get all registrations for a specific user
 
 ### Payments
-Assume for now same verbs/functions between Stripe and PayPal - represented as `[service]`
+>Assume for now same verbs/functions between Stripe and PayPal - represented as `[service]`
 
 `POST /users/:id/payments/[service]` - create a charge for a transaction
 
@@ -89,6 +91,7 @@ Assume for now same verbs/functions between Stripe and PayPal - represented as `
 `DELETE /organizations/:id` - deactivate organization
 
 ### Nodes
+>Any object that is a node on functional tree - can be an occasion or container
 
 `GET /organizations/:org_id/nodes` - return all nodes belonging to `:org_id`  
 `GET /organizations/:org_id/nodes?isRoot=true` - return all root level nodes belonging to `:org_id`
@@ -116,6 +119,8 @@ Assume for now same verbs/functions between Stripe and PayPal - represented as `
 `DELETE /organizations/:org_id/nodes/:id` - delete a node, only available prior to offering
 
 ### Occasions and Containers
+>Occasions are a node that represents one thing happening in one place (real or virtual) at one time.  
+>Containers are nodes that contain other nodes.
 
 `POST /organizations/:org_id/occasions` - create a new occasion
 
@@ -132,6 +137,37 @@ Assume for now same verbs/functions between Stripe and PayPal - represented as `
 ```
 
 `DELETE organizations/:org_id/containers/:id/children/:id2` - remove node `id2` from container with `id`
+
+### Groups
+>Groups are organizational containers, but cannot be used for functional node purposes such as registration.  
+>Groups can be used for administrative grouping, such as for organization on the GUI.  
+>Groups are a core component for assigning access control to users inside an organization.  
+>Groups **cannot** be nested for initial implementation. Later implementation may allow for nesting of groups in the same manner as nodes are arranged in trees.  
+
+`POST /organization/:org_id/groups` - create a new group
+
+`PATCH /organizations/:org_id/groups/:id/nodes` - **ADD** nodes nodeId1 and nodeId2 to group with `id`
+```
+[ "nodeId1", "nodeId2", ... ]
+```
+
+`DELETE /organizations/:org_id/groups/:id` - remove or deactivate group with `id`
+
+### Permissions
+>Access control for organizations.  
+>An `org_id`:`user_id` pair will contain a set of `group_id`:`access_level` pairs. The `group_id` can be ***** to represent an access level the user has on all groups in the organization.  
+>For now, access levels will not be user defined - however applying multiple access levels to a user in a group will combine to the **least** restrictive combination of those access levels. We will define access levels such as "Owner", "Organization Admin", "Bookkeeper", "Event Admin", etc.
+
+`POST organizations/:org_id/permissions/:user_id` - add user with `user_id` to set of authorized users for the organization. This will by default give them `[{ "*":"none" }]` access. Give option to include `[permissions]` inside body to set initial permissions.
+
+`GET organizations/:org_id/permissions/:user_id` - return the `[permissions]` set for the user with `user_id`
+
+`PATCH organizations/:org_id/permissions/:user_id/` - **ADD** the `group_id`:`access_level` pairs listed in `[permissions]` inside the request body to the user with `user_id`.  
+**NOTE:** Multiple access levels can be applied to one user inside one group. Therefore there is only **ADD** and **DELETE** functionality. A **SET**, i.e. changing the access level would functionally be a **DELETE** of the existing pair, and an **ADD** of the new pair.
+
+`PUT organizations/:org_id/permissions/:user_id` - **DELETE** an existing `group_id`:`access_level` pair in the user with `user_id` `[permissions]`.
+
+`DELETE organizations/:org_id/permissions/:user_id` - remove the user with `user_id` from the set of authorized users for the organization.
 
 ### Surveys
 
