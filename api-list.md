@@ -101,7 +101,8 @@ API Root Path
 `PUT /organizations/:org_id/nodes/:id` - update node
 ```
 {
-    "published": true // html body sets node to be published.
+    "public": true // html body sets node to be public.
+    "active": true // html body sets node to be active
     , "offering" : { // html body sets node to be an offering
        // with the following options
        "price": 1000 // $10
