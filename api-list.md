@@ -19,10 +19,11 @@
 
 **Filtering**
 
-Requests can filter the results by parameters. eg: `?filter=active&filter=name%3Dswing`
+Requests can filter the results by parameters. eg: `?filter=active&filter=name%3D+swing`
 
 - filter parameters can be poplated by just the field name (which tests for existance)
 - they can also have a property name, followed by an operator
+- every operator will be followed by a "+" (escaped whitespace) so that there is no confusion about the end of an operator and the beginning of the filter value
 
 Operators (will be url encoded)
 - "=" looks for exact match
