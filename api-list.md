@@ -134,13 +134,50 @@ API Root Path
 ### Offerings
 ```
 {
-    "price": 1000 // $10
-    , "startDate" : TIMESTAMP // when offering begins
-    , "endDate" : TIMESTAMP // when it ends
-    , "cancelationDeadline": TIMESTAMP // can't be canceled after this date
-    , "modificationDeadline": TIMESTAMP // information (survey responses) can't be modified after this
-    , "conditionalPrices": {} // future nice to have
-    , ...
+    id: 'sdfsdfs'
+    , name: "Lindy Hop 1"
+    , parent: 'parentfolderid'
+    , organization: 'orgid'
+    , visible: true
+    , active: true
+    , cancellationDeadline: '2018-02-23T00:00:00Z'
+    , modificationDeadline: '2018-02-23T00:00:00Z'
+    , price: 6000
+    , priceRules: [
+        {
+            name: 'Early bird price'
+            , rule: ['TODAY', '<2018-02-01']
+            , value: 5000
+        }
+    ]
+    , limitRules: [
+        {
+            name: 'Leaders'
+            , rule: ['variants.role', 'leader']
+            , value: 30
+        }
+        , {
+            name: 'Followers'
+            , rule: ['variants.role', 'follower']
+            , value: 30
+        }
+    ]
+    , availability: [
+        { name: 'Leaders', value: 20 }
+        , { name: 'Followers', value: 16 }
+    ]
+    , variants: [
+        {
+            name: 'role'
+            , values: ['leader', 'follower']
+        }
+    ]
+    , occasions: [
+        'sdf32'
+        , 'werwer'
+        , 'sdfdsf'
+        , 'lskjdf'
+    ]
 }
 ```
 
